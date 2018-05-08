@@ -12,7 +12,7 @@ function signedIn() {
 }
 
 const Main = () => (
-  <main role="main" className="col-md-8 ml-sm-auto col-lg-8 pt-3 px-4 dz-clickable">
+  <main role="main" className="main-container">
     <SearchBar />
     <Route exact path="/" component={Home} />
     <Route path="/courses/:courseNumber" component={Course} />

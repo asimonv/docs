@@ -42,7 +42,7 @@ export default class Links extends Component {
     }
 
     return (
-      <div className="comments-wrapper">
+      <div id="links" className="links-wrapper">
         <p className="section-title">Links</p>
         {this.props.user &&
           <LinkForm

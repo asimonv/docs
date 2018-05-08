@@ -21,35 +21,35 @@ export default class Sidebar extends Component {
 
   render() {
     return (
-      <nav className="col-md-2">
-        <div className="sidebar-sticky">
-          <ul>
+      <nav className="sidebar-container">
+        <ul className="sidebar-ul">
+          <li>
+            <Link to="/">
+              <span role="img" aria-label="sushi">🍣</span>
+            </Link>
+          </li>
+          {this.props.user &&
             <li>
-              <Link to="/">
-                <span role="img" aria-label="sushi">🍣</span>
-              </Link>
+              <span>Hi <Link
+                to={`/users/${this.props.user.currentUser}`}
+                className="user-link"
+                >{this.props.user.currentUser}</Link> :-)</span>
+              <div>
+                <form onSubmit={this.onSubmit} className="dropdown-item" action="/signin" method="post">
+                  <input type="hidden" name="_method" value="delete" />
+                  <input type="submit" value="Log Out" />
+                </form>
+              </div>
             </li>
-            {this.props.user &&
-              <li>
-                <span>Hi {this.props.user.currentUser} :-)</span>
-                <div>
-                  <Link to={`/users/${this.props.user.currentUser}`}>Profile</Link>
-                  <form onSubmit={this.onSubmit} className="dropdown-item" action="/signin" method="post">
-                    <input type="hidden" name="_method" value="delete" />
-                    <input type="submit" value="Log Out" />
-                  </form>
-                </div>
-              </li>
-            }
-            {!this.props.user &&
-              <li>
-                <Link to="/signin">Sign in</Link>
-              </li>
-            }
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/courses">Courses</Link></li>
-          </ul>
-        </div>
+          }
+          {!this.props.user &&
+            <li>
+              <Link to="/signin">Sign in</Link>
+            </li>
+          }
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/courses">Courses</Link></li>
+        </ul>
       </nav>
     );
   }

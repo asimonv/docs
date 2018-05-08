@@ -1,7 +1,8 @@
+import { PersistGate } from 'redux-persist/integration/react';
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from '../store';
+import { store, persistor } from '../store';
 import Main from './Main';
 import FileUploader from './FileUploader';
 import Sidebar from './Sidebar';
@@ -9,16 +10,16 @@ import Sidebar from './Sidebar';
 export default function App(props) {
   return (
     <Provider store={store}>
-      <FileUploader disableClick >
-        <BrowserRouter>
-          <div className="container-fluid">
-            <div className="row">
+      <PersistGate loading={null} persistor={persistor}>
+        <FileUploader disableClick >
+          <HashRouter>
+            <div className="layout-container">
               <Sidebar {...props} />
               <Main {...props} />
             </div>
-          </div>
-        </BrowserRouter>
-      </FileUploader>
+          </HashRouter>
+        </FileUploader>
+      </PersistGate>
     </Provider>
   );
 }

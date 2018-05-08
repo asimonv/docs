@@ -1,5 +1,6 @@
 @import './layout';
 @import './courses';
+@import './link';
 
 $light-gray: #e4e5e6;
 
@@ -9,11 +10,8 @@ $light-gray: #e4e5e6;
   text-transform: capitalize;
 }
 
-.user-link{
-  display: inline-block;
-  background-color: $light-gray;
-  color:black;
-  border-radius: 20px;
+.url-link{
+  word-break: break-all;
 }
 
 .sb-item{
@@ -53,32 +51,4 @@ $light-gray: #e4e5e6;
 
 #df-content{
   overflow-y: auto;
-}
-
-/* ---- table ---- */
-
-.table{
-  width: 100%;
-  max-width: 100%;
-}
-
-.table td{
-  display: flex;
-}
-
-.table-content{
-  display: flex;
-  width: 100%;
-  max-width: 100%;
-}
-
-.table-content div:first-child {
-  flex-grow: 1;
-}
-
-.table-content div:not(:first-child) {
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }

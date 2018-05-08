@@ -5,8 +5,6 @@
 
 body {
   margin: 0;
-  padding-top: 15px;
-  padding-bottom: 15px;
   font-family: -apple-system,
               BlinkMacSystemFont,
               "Segoe UI",
@@ -25,6 +23,60 @@ body {
   background-color: #fff;
 }
 
+@media screen and (min-width: 600px){
+  .layout-container {
+   -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+  .sidebar-ul li{
+    display: list-item;
+  }
+}
+
+
+@media screen and (max-width: 600px){
+  .layout-container {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  .sidebar-ul li{
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+    float: left;
+  }
+
+  .sidebar-container{
+    background-color: blue;
+    color: white;
+    padding: 15px;
+  }
+  .sidebar-ul{
+    margin: 0;
+  }
+
+  .user-link{
+    color: white;
+  }
+
+  .sidebar-ul > li > a{
+    color: white;
+  }
+}
+
+.layout-container{
+  display: flex;
+}
+
+.main-container{
+  flex: 0.8;
+  margin: 10px;
+}
+
+.sidebar-container{
+  flex: 0.15;
+}
+
 .brand-title{
   font-size: -webkit-xxx-large;
   font-size: -moz-xxx-large;
@@ -39,4 +91,9 @@ body {
 
 .dz-upload-progress{
   font-weight: 600;
+}
+
+.file-content{
+  display: flex;
+  flex-direction: row;
 }

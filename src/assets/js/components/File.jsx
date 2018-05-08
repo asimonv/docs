@@ -33,15 +33,21 @@ export default class File extends Component {
   render() {
     return (
       <div
-        className="table-content"
+        className="file-content"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
         <div>
-          <a target="_blank" href={this.props.file.path}>{this.props.file.filename}</a>
+          <a
+            target="_blank"
+            href={this.props.file.path}
+            className="url-link"
+          >{this.props.file.filename}
+          </a>
           <p style={{ marginTop: 0 }}>
             <a
               href={`/users/${this.props.file.username}`}
+              className="url-link"
             >@{this.props.file.username}
             </a> | {moment(this.props.file.updatedAt).format('lll')} | {this.props.file.size}
           </p>

@@ -54,22 +54,15 @@ export default class Files extends Component {
       <div id="content">
         <p className="section-title">Files</p>
         {this.props.files.length > 0 &&
-          <Table hover>
-            <tbody>
-              {this.props.files && this.props.files.map(file => (
-                <tr key={file.id}>
-                  <td>
-                    <FileComponent
-                      file={file}
-                      removeFile={this.onRemoveFile}
-                      {...this.props}
-                    />
-                  </td>
-                </tr>
-              ))
-            }
-            </tbody>
-          </Table>
+          this.props.files.map(file => (
+            <div key={file.id}>
+              <FileComponent
+                file={file}
+                removeFile={this.onRemoveFile}
+                {...this.props}
+              />
+            </div>
+          ))
         }
         {!this.props.files.length && <p>No files</p>}
       </div>

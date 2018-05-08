@@ -41,12 +41,12 @@ export default class Link extends Component {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        <div className="comment-bubble">
+        <div className="link-bubble">
           <a
             title={`${userText} ${timestampText}`}
             target="_blank"
             href={this.props.link.url}
-            className="comment-text"
+            className="url-link"
           >[{this.props.index}] {this.props.link.url}
           </a>
         </div>

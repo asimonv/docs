@@ -1,3 +1,5 @@
+/*  eslint no-unused-vars: ["error", { "args": "none" }]  */
+
 module.exports = {
   up(queryInterface, Sequelize) {
     return queryInterface.createTable('Votes', {
@@ -20,6 +22,7 @@ module.exports = {
       },
     });
   },
+
   down(queryInterface, Sequelize) {
     return queryInterface.dropTable('Votes');
   },

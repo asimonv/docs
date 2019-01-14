@@ -8,6 +8,7 @@ const signin = require('./routes/signin');
 const signout = require('./routes/signout');
 const search = require('./routes/search');
 const files = require('./routes/files');
+const teachers = require('./routes/teachers');
 
 const router = new KoaRouter();
 
@@ -30,5 +31,6 @@ router.use('/posts', posts.routes());
 router.use('/courses', courses.routes());
 router.use('/search', search.routes());
 router.use('/files', files.routes());
+router.use('/teachers', teachers.routes());
 
 module.exports = router;

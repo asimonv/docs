@@ -19,6 +19,12 @@ module.exports = function defineCourse(sequelize, DataTypes) {
       { foreignKey: 'courseNumber' },
       { onDelete: 'cascade', hooks: true },
     );
+
+    Course.belongsToMany(models.Teachers, {
+      through: 'TeacherCourse',
+      as: 'teachers',
+      foreignKey: 'courseNumber',
+    });
   };
 
   Course.prototype.getFiles = async function getFiles() {

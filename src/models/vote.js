@@ -4,7 +4,7 @@ module.exports = function defineVote(sequelize, DataTypes) {
   });
   Vote.associate = function associate(models) {
     // associations can be defined here
-    Vote.belongsTo(models.Teacher);
+    Vote.belongsTo(models.Teachers);
   };
 
   return Vote;

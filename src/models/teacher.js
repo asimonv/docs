@@ -1,5 +1,5 @@
 module.exports = function defineTeacher(sequelize, DataTypes) {
-  const Teacher = sequelize.define('Teacher', {
+  const Teacher = sequelize.define('Teachers', {
     name: DataTypes.STRING,
     popularity: DataTypes.INTEGER,
     clarity: DataTypes.FLOAT,

@@ -33,7 +33,6 @@ router.get('/:number', loadCourse, async (ctx) => {
 });
 
 router.use('/:number/links', loadCourse, async (ctx, next) => {
-  console.log('fdfdfdf');
   await next();
 }, linksRouter.routes());
 

@@ -12,4 +12,8 @@ export default {
   async getFiles(courseNumber) {
     return jsonRequest(`/courses/${courseNumber}/files`);
   },
+
+  async getTeachers(courseNumber) {
+    return jsonRequest(`/courses/${courseNumber}/teachers/`);
+  },
 };

@@ -9,6 +9,7 @@ import { subscribeToTimer } from '../services/api';
 import { fetchCourse, removeActualCourse } from '../actions/courseActions';
 
 @connect(store => ({
+  teachers: store.course.courseTeachers,
   courseFiles: store.course.courseFiles,
   fetchingCourseFiles: store.course.fetchingCourseFiles,
   fetchingCourse: store.course.fetchingCourse,
@@ -40,7 +41,6 @@ class Course extends Component {
   }
 
   componentWillUnmount() {
-    console.log('unmounted');
     this.props.dispatch(removeActualCourse());
   }
 

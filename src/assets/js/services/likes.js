@@ -29,7 +29,6 @@ export default {
     const route = likeType === 'post' ? `/posts/${objectId}/likes/${likeId}/unlike` :
       `/comments/${objectId}/likes/${likeId}/unlike`;
 
-    console.log(route);
     return jsonRequest(route, {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' },

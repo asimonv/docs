@@ -75,10 +75,28 @@ export const putLink = data => async (dispatch) => {
   dispatch(recieveLink(data, res));
 };
 
+const requestTeachers = courseNumber => ({
+  type: courseConstants.FETCH_COURSE_TEACHERS,
+  courseNumber,
+});
+
+const receiveTeachers = (courseNumber, res) => ({
+  type: courseConstants.FETCH_COURSE_FULLFILED,
+  payload: res,
+  courseNumber,
+});
+
+export const fetchTeachers = courseNumber => async (dispatch) => {
+  dispatch(requestTeachers(courseNumber));
+  const res = await courseService.getTeachers(courseNumber);
+  dispatch(receiveTeachers(courseNumber, res));
+};
+
 export default {
   fetchFiles,
   fetchCourse,
   fetchLinks,
+  fetchTeachers,
   putLink,
   removeActualCourse,
 };

@@ -3,6 +3,7 @@ import { courseConstants, fileConstants, linkConstants } from '../constants';
 export default function reducer(state = {
   courseFiles: [],
   links: [],
+  courseTeachers: [],
   fetchingCourseFiles: false,
   fetchingCourseLinks: false,
   fetchingCourse: false,
@@ -23,6 +24,10 @@ export default function reducer(state = {
       return { ...state, fetchingCourseLinks: true };
     }
 
+    case courseConstants.FETCH_COURSE_TEACHERS: {
+      return { ...state, fetchingCourseTeachers: true };
+    }
+
     case courseConstants.FETCH_COURSE_FILES_REJECTED: {
       return { ...state, fetchingCourseFiles: false, error: action.payload };
     }
@@ -39,12 +44,20 @@ export default function reducer(state = {
       return { ...state, fetchingCourseFiles: false, courseFiles: action.payload };
     }
 
+    case courseConstants.FETCH_COURSE_TEACHERS_REJECTED: {
+      return { ...state, fetchingCourseTeachers: false, error: action.payload };
+    }
+
     case courseConstants.FETCH_COURSE_FULLFILED: {
       return { ...state, fetchingCourse: false, course: action.payload };
     }
 
     case courseConstants.FETCH_COURSE_LINKS_FULLFILED: {
-      return { ...state, fetchingCourseLinks: false, links: action.payload };
+      return { ...state, fetchingCourseTeachers: false, links: action.payload };
+    }
+
+    case courseConstants.FETCH_COURSE_TEACHERS_FULLFILED: {
+      return { ...state, fetchingCourseTeachers: false, courseTeachers: action.payload };
     }
 
     case courseConstants.REMOVE_ACTUAL_COURSE: {

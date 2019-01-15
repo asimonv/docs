@@ -6,6 +6,7 @@ module.exports = function defineCourse(sequelize, DataTypes) {
     description: DataTypes.TEXT,
     englishName: DataTypes.STRING,
   });
+
   Course.associate = function associate(models) {
     // associations can be defined here
     Course.hasMany(
@@ -19,11 +20,19 @@ module.exports = function defineCourse(sequelize, DataTypes) {
       { foreignKey: 'courseNumber' },
       { onDelete: 'cascade', hooks: true },
     );
+  };
 
-    Course.belongsToMany(models.Teachers, {
-      through: 'TeacherCourse',
-      as: 'teachers',
-      foreignKey: 'courseNumber',
+  Course.prototype.getTeachers = async function getTeachers() {
+    return sequelize.models.Teachers.findAll({
+      include: [
+        {
+          model: sequelize.models.TeacherCourse,
+          attributes: [],
+          where: {
+            courseNumber: this.get('courseNumber'),
+          },
+        },
+      ],
     });
   };
 

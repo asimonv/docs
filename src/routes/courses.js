@@ -1,5 +1,6 @@
 const KoaRouter = require('koa-router');
 const linksRouter = require('./links');
+const teachersRouter = require('./teachers');
 
 const router = new KoaRouter();
 
@@ -19,7 +20,13 @@ router.get('/:number/files', loadCourse, async (ctx) => {
   ctx.body = await course.getFiles();
 });
 
-router.get('/:number', loadCourse, async (ctx) => {
+router.get('/:number/teachers', loadCourse, async (ctx) => {
+  const { course } = ctx.state;
+  const teachers = await course.getTeachers();
+  ctx.body = teachers;
+});
+
+router.get('course', '/:number', loadCourse, async (ctx) => {
   const { course } = ctx.state;
   if (course) {
     ctx.body = {
@@ -33,7 +40,9 @@ router.get('/:number', loadCourse, async (ctx) => {
 });
 
 router.use('/:number/links', loadCourse, async (ctx, next) => {
+  console.log('links');
   await next();
 }, linksRouter.routes());
+
 
 module.exports = router;

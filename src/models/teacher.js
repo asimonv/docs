@@ -10,6 +10,7 @@ module.exports = function defineTeacher(sequelize, DataTypes) {
   Teacher.associate = function associate(models) {
     // associations can be defined here
     Teacher.hasMany(models.Vote, { as: 'votes' });
+    Teacher.hasMany(models.TeacherCourse, { foreignKey: 'teacherId', sourceKey: 'id' });
   };
 
   return Teacher;

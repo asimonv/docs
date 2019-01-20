@@ -3,10 +3,11 @@
 */
 
 import React, { Component } from 'react';
-import Select from 'react-select';
+import Async from 'react-select/lib/Async';
 import Highlighter from 'react-highlight-words';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+
 import searchService from '../services/search';
 import { fetchCourse } from '../actions/courseActions';
 
@@ -35,18 +36,27 @@ class SearchBar extends Component {
   }
 
   optionRenderer(option) {
+    const text = option.courseNumber ? `${option.courseNumber} - ${option.name}` : `${option.name}`;
     return (
       <Highlighter
         highlightStyle={{ fontWeight: 'bold' }}
         searchWords={[this.state.query]}
-        textToHighlight={`${option.courseNumber} - ${option.name}`}
+        textToHighlight={text}
       />
     );
   }
 
   async handleSearch(query) {
     const res = await searchService.get(query);
-    return { options: res };
+    const options = [{
+      label: 'Courses',
+      options: res.courses,
+    }, {
+      label: 'Teachers',
+      options: res.teachers,
+    }];
+
+    return options;
   }
 
   render() {
@@ -54,7 +64,7 @@ class SearchBar extends Component {
     const ignoreCase = true;
 
     return (
-      <Select.Async
+      <Async
         name="form-field-name"
         autoload={false}
         loadOptions={this.handleSearch}
@@ -66,9 +76,9 @@ class SearchBar extends Component {
         ignoreAccents={ignoreAccents}
         ignoreCase={ignoreCase}
         noResultsText="No results found"
-        optionRenderer={this.optionRenderer}
-        labelKey="courseNumber"
-        valueKey="courseNumber"
+        formatOptionLabel={this.optionRenderer}
+        getOptionLabel={({ name }) => name}
+        getOptionValue={({ courseName }) => courseName}
       />
     );
   }

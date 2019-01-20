@@ -26,7 +26,17 @@ router.get('search', '/:q', async (ctx) => {
     },
     limit: 10,
   });
-  ctx.body = courses;
+
+  const teachers = await ctx.orm.teacher.findAll({
+    where: {
+      name: {
+        $ilike: `%${ctx.params.q}%`,
+      },
+    },
+    limit: 10,
+  });
+
+  ctx.body = { courses, teachers };
 });
 
 module.exports = router;

@@ -1,6 +1,5 @@
 const KoaRouter = require('koa-router');
 const linksRouter = require('./links');
-const teachersRouter = require('./teachers');
 
 const router = new KoaRouter();
 
@@ -40,7 +39,6 @@ router.get('course', '/:number', loadCourse, async (ctx) => {
 });
 
 router.use('/:number/links', loadCourse, async (ctx, next) => {
-  console.log('links');
   await next();
 }, linksRouter.routes());
 

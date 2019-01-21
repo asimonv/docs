@@ -20,10 +20,41 @@ router.get('/:id', loadTeacher, async (ctx) => {
   ctx.body = teacher.toJSON();
 });
 
-router.get('/:id/stats', loadTeacher, async (ctx) => {
-  const { teacher, currentUser } = ctx.state;
-  const [res] = await teacher.getStats(currentUser);
-  ctx.body = res;
+//  my web teacher would be very dissapointed about this :(
+router.get('/:id/stats/:userId', loadTeacher, async (ctx) => {
+  const { teacher } = ctx.state;
+  const { userId } = ctx.params;
+  const [res] = await teacher.getStats(userId);
+  const [votes] = res;
+  const response = {
+    popularity: {
+      votes: votes.voted_knowledge,
+      voted: votes.voted_popularity,
+      value: votes.popularity,
+    },
+    knowledge: {
+      votes: votes.votes_knowledge,
+      voted: votes.voted_knowledge,
+      value: votes.knowledge,
+    },
+    clarity: {
+      votes: votes.votes_clarity,
+      voted: votes.voted_clarity,
+      value: votes.clarity,
+    },
+    demand: {
+      votes: votes.votes_demand,
+      voted: votes.voted_demand,
+      value: votes.demand,
+    },
+    disposition: {
+      votes: votes.votes_disposition,
+      voted: votes.voted_disposition,
+      value: votes.disposition,
+    },
+  };
+  console.log(response);
+  ctx.body = response;
 });
 
 module.exports = router;

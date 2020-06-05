@@ -26,7 +26,7 @@ module.exports = {
           model: 'Users',
           key: 'username',
         },
-        allowNull: true,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

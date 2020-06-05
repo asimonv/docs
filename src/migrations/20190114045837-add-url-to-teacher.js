@@ -1,6 +1,6 @@
 module.exports = {
   up(queryInterface, Sequelize) {
-    queryInterface.addColumn(
+    return queryInterface.addColumn(
       'Teachers',
       'url', {
         type: Sequelize.STRING,
@@ -10,7 +10,7 @@ module.exports = {
   },
 
   down(queryInterface, Sequelize) {
-    queryInterface.removeColumn(
+    return queryInterface.removeColumn(
       'Teachers',
       'url', {
         type: Sequelize.STRING,

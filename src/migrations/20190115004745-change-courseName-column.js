@@ -2,10 +2,10 @@
 
 module.exports = {
   up(queryInterface, Sequelize) {
-    queryInterface.renameColumn('TeacherCourses', 'courseName', 'courseNumber');
+    return queryInterface.renameColumn('TeacherCourses', 'courseName', 'courseNumber');
   },
 
   down(queryInterface, Sequelize) {
-    queryInterface.renameColumn('TeacherCourses', 'courseNumber', 'courseName');
+    return queryInterface.renameColumn('TeacherCourses', 'courseNumber', 'courseName');
   },
 };

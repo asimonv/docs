@@ -4,14 +4,14 @@ const { storage } = require('pkgcloud');
 const googleConfig = require('../config/google');
 const progress = require('progress-stream');
 
-const CONTAINER_NAME = 'dogfinder';
+const CONTAINER_NAME = 'docs-app-files';
 
 class FileStorage {
   constructor() {
     this.client = storage.createClient({
       provider: 'google',
       credentials: googleConfig,
-      projectId: 'dogfinder-183313',
+      projectId: process.env.GOOGLE_PROJECT_ID,
     });
   }
 

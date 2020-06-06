@@ -1,7 +1,7 @@
 const fileStorage = require('../../services/file-storage');
 const bytes = require('bytes');
 
-const IMG_URL = 'https://storage.googleapis.com/dogfinder';
+const IMG_URL = 'https://storage.googleapis.com/docs-app-files';
 
 exports.upload = async function upload(ctx, files, fields, io) {
   Object.keys(files).forEach(async (key) => {
@@ -17,7 +17,7 @@ exports.upload = async function upload(ctx, files, fields, io) {
       };
       console.log(`uploading: ${key} to ${fields.courseNumber} from ${fields.user}`);
       try {
-        const filedUploaded = await fileStorage.upload(f, io);
+        const fileUploaded = await fileStorage.upload(f, io);
         console.log(fileUploaded);
         const file = await ctx.orm.Files.build(body).save();
         io.emit('fileUploaded', { file });

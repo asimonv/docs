@@ -47,8 +47,6 @@ export default class Sidebar extends Component {
               <Link to="/signin">Sign in</Link>
             </li>
           }
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/courses">Courses</Link></li>
         </ul>
       </nav>
     );

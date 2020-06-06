@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getUser } from '../actions/userActions';
+import Files from '../containers/Files';
 
 @connect(store => ({
   user: store.user.user,
+  files: store.user.files,
   loadingUser: store.user.loadingUser,
 }))
 export default class User extends Component {
@@ -20,11 +22,7 @@ export default class User extends Component {
     return (
       <div>
         <p>{this.props.user.username} :-)</p>
-        <video title="Taken from Facebook :-)" height="240" autoPlay loop>
-          <track kind="captions" />
-          <source src="https://storage.googleapis.com/dogfinder/23684770_376355832809351_3692374764371836928_n.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-        </video>
+        <Files showThankYou files={this.props.files} />
       </div>
     );
   }

@@ -4,6 +4,7 @@ export default function reducer(state = {
   user: undefined,
   loadingUser: false,
   error: null,
+  files: null,
 }, action) {
   switch (action.type) {
     case userConstants.USER_REQUEST: {
@@ -15,7 +16,7 @@ export default function reducer(state = {
     }
 
     case userConstants.USER_REQUEST_FULLFILED: {
-      return { ...state, loadingUser: false, user: action.payload };
+      return { ...state, loadingUser: false, ...action.payload };
     }
 
     default:

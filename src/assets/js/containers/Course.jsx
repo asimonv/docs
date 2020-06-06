@@ -10,7 +10,7 @@ import { fetchCourse, removeActualCourse } from '../actions/courseActions';
 
 @connect(store => ({
   teachers: store.course.courseTeachers,
-  courseFiles: store.course.courseFiles,
+  files: store.course.courseFiles,
   fetchingCourseFiles: store.course.fetchingCourseFiles,
   fetchingCourse: store.course.fetchingCourse,
   course: store.course.course,
@@ -66,7 +66,7 @@ class Course extends Component {
                 onClickLink={this.onClickLink}
               />
             )}
-            {this.props.courseFiles && <Files {...this.props} />}
+            {this.props.files && <Files {...this.props} />}
             {<Links {...this.props} />}
           </div>
         </div>
@@ -85,12 +85,12 @@ Course.defaultProps = {
     },
   },
   course: undefined,
-  courseFiles: [],
+  files: [],
 };
 
 Course.propTypes = {
   currentUser: PropTypes.string,
-  courseFiles: PropTypes.arrayOf(PropTypes.shape({
+  files: PropTypes.arrayOf(PropTypes.shape({
     courseNumber: PropTypes.string.isRequired,
     extension: PropTypes.string.isRequired,
     filename: PropTypes.string.isRequired,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FileComponent from '../components/File';
@@ -10,7 +9,6 @@ import { removeFile } from '../actions/fileActions';
 
 @connect(store => ({
   user: store.auth.user,
-  files: store.course.courseFiles,
   course: store.course.course,
   fetchingCourseFiles: store.course.fetchingCourseFiles,
 }))
@@ -52,7 +50,7 @@ export default class Files extends Component {
 
     return (
       <div id="content">
-        <p className="section-title">Files</p>
+        <p className="section-title">{`Files ${this.props.showThankYou ? '🙇‍♂️' : ''}`}</p>
         {this.props.files.length > 0 &&
           this.props.files.map(file => (
             <div key={file.id}>
@@ -76,6 +74,7 @@ Files.defaultProps = {
   user: undefined,
   dispatch: undefined,
   fetchingCourseFiles: undefined,
+  showThankYou: false,
 };
 
 Files.propTypes = {
@@ -92,4 +91,5 @@ Files.propTypes = {
   currentUser: PropTypes.string,
   dispatch: PropTypes.func,
   fetchingCourseFiles: PropTypes.bool,
+  showThankYou: PropTypes.bool,
 };

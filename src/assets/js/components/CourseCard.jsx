@@ -12,17 +12,6 @@ export default function CourseCard(props) {
         className="navbar navbar-light bg-light justify-content-between"
       >
         <span>{props.course.courseNumber} {separator} {props.course.name} {englishName}</span>
-        <div
-          className="btn-toolbar justify-content-between"
-          role="toolbar"
-          aria-label="Toolbar with button groups"
-        >
-          <button
-            type="button"
-            id="upload-btn"
-          >Upload files
-          </button>
-        </div>
       </nav>
       <p className="card-subcontent">{props.course.description}</p>
     </div>

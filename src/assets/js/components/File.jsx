@@ -46,7 +46,7 @@ export default class File extends Component {
           </a>
           <p style={{ marginTop: 0 }}>
             <a
-              href={`/users/${this.props.file.username}`}
+              href={`/#/users/${this.props.file.username}`}
               className="url-link"
             >@{this.props.file.username}
             </a> | {moment(this.props.file.updatedAt).format('lll')} | {this.props.file.size}

@@ -45,7 +45,7 @@ module.exports = function defineuser(sequelize, DataTypes) {
 
   User.prototype.getFiles = async function getFiles() {
     const files = await sequelize.models.files.findAll({
-      where: { userId: this.id },
+      where: { username: this.username },
       order: [['updatedAt', 'DESC']],
     });
     return files;

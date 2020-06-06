@@ -4,7 +4,7 @@ const router = new KoaRouter();
 
 async function loadUser(ctx, next) {
   ctx.state.user = await ctx.orm.Users.findOne({
-    where: { username: ctx.params.id },
+    where: { username: ctx.params.username },
   });
   return next();
 }
@@ -15,7 +15,7 @@ router.get('users', '/', async (ctx) => {
   await ctx.render('user/index', {
     users,
     user,
-    userPath: ctx.router.url('showUser', { id: user.username }),
+    userPath: ctx.router.url('showUser', { username: user.username }),
   });
 });
 

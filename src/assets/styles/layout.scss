@@ -96,4 +96,10 @@ body {
 .file-content{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.table-content{
+  display: flex;
+  justify-content: space-between;
 }

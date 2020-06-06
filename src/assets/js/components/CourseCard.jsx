@@ -22,8 +22,6 @@ export default function CourseCard(props) {
             id="upload-btn"
           >Upload files
           </button>
-          <button type="button">Download all</button>
-          <button onClick={props.onClickLink} type="button">Add urls</button>
         </div>
       </nav>
       <p className="card-subcontent">{props.course.description}</p>

@@ -14,7 +14,7 @@ router.post('newPost', '/', async (ctx) => {
   const { body } = ctx.request;
   const { fields, files } = body;
   const { io } = ctx.state;
-  ctx.body = await upload(ctx, files, fields, io);
+  ctx.body = ctx.session.userId ? await upload(ctx, files, fields, io) : { error: true, message: 'error uploading file' };
 });
 
 module.exports = router;

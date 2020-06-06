@@ -19,9 +19,13 @@ router.get('users', '/', async (ctx) => {
   });
 });
 
-router.get('showUser', '/:id', loadUser, async (ctx) => {
+router.get('showUser', '/:username', loadUser, async (ctx) => {
   const { user } = ctx.state;
-  ctx.body = user;
+  const files = await user.getFiles();
+  ctx.body = {
+    user,
+    files,
+  };
 });
 
 module.exports = router;

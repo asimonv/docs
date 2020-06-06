@@ -25,7 +25,7 @@ export default class Sidebar extends Component {
         <ul className="sidebar-ul">
           <li>
             <Link to="/">
-              <span role="img" aria-label="sushi">🍣</span>
+              <img width="29" height="29" src="https://storage.googleapis.com/docs-app-files/icon.png" alt="sushi" />
             </Link>
           </li>
           {this.props.user &&

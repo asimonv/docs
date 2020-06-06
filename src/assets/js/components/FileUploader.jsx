@@ -75,7 +75,7 @@ export default class FileUploader extends Component {
       },
       addedfile: (addedFile) => {
         setTimeout(() => {
-          if (addedFile.accepted) {
+          if (addedFile.accepted && this.props.user) {
             const file = {
               file: addedFile,
               courseNumber:this.props.course.courseNumber,
